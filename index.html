@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok Default - Interactive Team</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation" id="bgAnimation"></div>
+    
+    <div class="container">
+        <div class="intro-screen fade-in" id="introScreen">
+            <div class="logo">Default</div>
+            <div class="subtitle">Bersama Nopal kita Berjaya</div>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.7);">
+                Kalo ga ada nopal kita jadi apa?!<br>
+                kalo kita bilang nopal, kalian bilang jaya jaya jaya ya.
+            </p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <button class="btn" onclick="startIntroduction()">Mulai Perkenalan</button>
+        </div>
+
+        <div class="member-screen hidden" id="memberScreen">
+            <div class="member-counter" id="memberCounter">Member 1/4</div>
+            <div class="member-avatar" id="memberAvatar">F</div>
+            <div class="member-name" id="memberName">Fachruddin Ghalibi</div>
+            <div class="member-role" id="memberRole">Fullstack Developer</div>
+            <div class="member-description" id="memberDescription">
+                blablabla
+            </div>
+            <button class="btn" onclick="nextMember()" id="nextBtn">Lanjutkan</button>
+            <button class="btn" onclick="prevMember()" id="prevBtn" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">Kembali</button>
+        </div>
+
+        <div class="landing-page hidden" id="landingPage">
+            <div class="landing-title">Tim Default</div>
+            <div class="landing-subtitle">Bersama Nopal kita Berjaya - Hidup Nopal</div>
+            
+            <div class="team-grid" id="teamGrid">
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn" onclick="resetIntroduction()">Ulangi Perkenalan</button>
+                <button class="btn" onclick="exploreMore()" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">Jelajahi Lebih</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
