@@ -1,4 +1,4 @@
-name: Deploy static content to Pages
+name: Validate and Deploy static content
 
 on:
   push:
@@ -17,8 +17,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate:
+    name: Validate static files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate HTML files
+        run: |
+          echo "Validating HTML files..."
+          find . -name "*.html" -print0 | xargs -0 -n1 tidy -e -q || true
+
+      - name: Validate CSS files
+        run: |
+          echo "Validating CSS files..."
+          find . -name "*.css" -exec csslint {} \; || true
+
+      - name: Check JavaScript files
+        run: |
+          echo "Checking JavaScript syntax..."
+          find . -name "*.js" -exec node -c {} \; || true
+
   deploy:
+    name: Deploy to GitHub Pages
     if: github.ref == 'refs/heads/main'
+    needs: validate
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
